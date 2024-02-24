@@ -17,6 +17,9 @@ export NIX_CONFIG="experimental-features = nix-command flakes"
 cd dotfiles # wherever the flake.nix file is located
 nix run home-manager/master -- switch --flake .
 nix run home-manager/master -- switch --flake .#jon@megaman
+
+# or from the internet
+nix run home-manager/master -- switch --flake github:jonknapp/dotfiles-v2#jon@megaman
 ```
 
 ### With Home Manager Installed
@@ -28,6 +31,9 @@ online flake version and can instead run:
 cd dotfiles # wherever the flake.nix file is located
 home-manager switch --flake .
 home-manager switch --flake .#jon@megaman
+
+# or from the internet
+home-manager switch --flake github:jonknapp/dotfiles-v2#jon@megaman
 ```
 
 ## Build a Configuration
@@ -38,6 +44,9 @@ to it.
 ```sh
 cd dotfiles # wherever the flake.nix file is located
 nix build .#jon@megaman
+
+# or from the internet
+nix build github:jonknapp/dotfiles-v2#jon@megaman
 ```
 
 This requires manual activation by running `./result/activate` once built.
