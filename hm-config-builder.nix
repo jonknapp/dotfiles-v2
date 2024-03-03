@@ -22,6 +22,7 @@ let
           homeDirectory = "/home/${username}";
         };
 
+        fonts.fontconfig.enable = true;
         systemd.user.systemctlPath = pkgs.lib.mkIf (genericLinux) "/usr/bin/systemctl";
         targets.genericLinux.enable = pkgs.lib.mkIf (genericLinux) true;
       }
