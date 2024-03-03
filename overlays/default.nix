@@ -4,7 +4,8 @@
   (import
     ./caffeine.nix
     {
-      inherit system;
-      pkgs = inputs.nixpkgs-caffeine;
+      pkgs = import inputs.nixpkgs-caffeine {
+        inherit system;
+      };
     })
 ]
