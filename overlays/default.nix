@@ -8,4 +8,11 @@
         inherit system;
       };
     })
+  (import
+    ./discord.nix
+    {
+      pkgs = import inputs.nixpkgs {
+        inherit system;
+      };
+    })
 ]
