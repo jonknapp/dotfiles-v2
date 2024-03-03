@@ -7,6 +7,9 @@
   else
     [ ]);
 
+  xdg.configFile."ssh/allowed_signers".text =
+    ''${config.programs.git.userEmail} namespaces="git" sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIKgPs5dWLchzE1FwvhUrmhD2ED+apqOxnpg9dBJaFL6eAAAAEXNzaDpibHVlLXNvbG9rZXky'';
+
   programs.git = {
     enable = true;
     userEmail = "jon@coffeeandcode.com";
@@ -22,6 +25,8 @@
       advice.skippedCherryPicks = false;
       core.editor = "${pkgs.vscode}/bin/code --wait";
       difftool.prompt = false;
+      gpg.format = "ssh";
+      gpg.ssh.allowedSignersFile = "~/${config.xdg.configFile."ssh/allowed_signers".target}";
       help.autocomplete = 1;
       help.autocorrect = 20;
       init.defaultBranch = "main";
@@ -47,7 +52,7 @@
     ];
 
     signing = {
-      key = "51330F9D3F9D368E";
+      key = "~/.ssh/id_ed25519_sk.pub";
       signByDefault = true;
     };
   };
