@@ -1,18 +1,24 @@
 { inputs, system, ... }:
 
+let
+  pkgsForSystem = { nixpkgs, system }: import nixpkgs {
+    inherit system;
+  };
+in
 [
   (import
     ./caffeine.nix
     {
-      pkgs = import inputs.nixpkgs-caffeine {
-        inherit system;
-      };
+      pkgs = pkgsForSystem { inherit system; nixpkgs = inputs.nixpkgs-caffeine; };
     })
   (import
     ./discord.nix
     {
-      pkgs = import inputs.nixpkgs {
-        inherit system;
-      };
+      pkgs = pkgsForSystem { inherit system; nixpkgs = inputs.nixpkgs; };
+    })
+  (import
+    ./todoist-electron.nix
+    {
+      pkgs = pkgsForSystem { inherit system; nixpkgs = inputs.nixpkgs; };
     })
 ]
