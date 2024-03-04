@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../programs/borgmatic.nix
     ../programs/vscode.nix
   ];
 
