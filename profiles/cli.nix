@@ -4,6 +4,7 @@
   imports = [
     ../programs/aws.nix
     ../programs/bash.nix
+    ../programs/direnv.nix
     ../programs/git.nix
     ../programs/gpg.nix
     ../programs/readline.nix
