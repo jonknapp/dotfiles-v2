@@ -13,6 +13,12 @@ let
   configuration = home-manager.lib.homeManagerConfiguration ({
     inherit pkgs;
 
+    extraSpecialArgs = {
+      hostConfig = {
+        inherit hostname;
+      };
+    };
+
     modules = [
       ./home.nix
       {

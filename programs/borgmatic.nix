@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
+{ config, hostConfig, pkgs, ... }:
 
+let
+  borgmaticConfig = (import ../files/borgbase.nix { homeDirectory = config.home.homeDirectory; }).${hostConfig.hostname};
+in
 {
   systemd.user.services.borg-backup = {
     Unit = {
@@ -37,7 +40,7 @@
         - '~'
 
     repositories:
-        - path: ssh://k054fh3a@k054fh3a.repo.borgbase.com/./repo
+        - path: ${borgmaticConfig.path}
           label: borgbase
 
     exclude_patterns:
@@ -57,7 +60,7 @@
     one_file_system: true
 
     compression: auto,zstd
-    encryption_passcommand: ${pkgs.rage}/bin/rage --decrypt -i ${config.home.homeDirectory}/.ssh/id_ed25519 ${../secrets/borg-passphrase.age}
+    encryption_passcommand: ${pkgs.rage}/bin/rage --decrypt -i ${borgmaticConfig.sshKey} ${borgmaticConfig.passphraseSecret}
     archive_name_format: '{hostname}-{now:%Y-%m-%d-%H%M%S}'
     # match_archives: sh:{hostname}-*
 
