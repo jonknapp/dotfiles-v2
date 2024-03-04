@@ -3,6 +3,7 @@
 {
   imports = [
     ./desktop-light.nix
+    ../programs/docker.nix
   ];
 
   home.packages =
@@ -17,4 +18,6 @@
         slack;
       # todoist-electron
     };
+
+  programs.docker = { enable = true; rootless = true; };
 }
