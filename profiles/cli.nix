@@ -7,6 +7,7 @@
     ../programs/direnv.nix
     ../programs/git.nix
     ../programs/gpg.nix
+    ../programs/heroku.nix
     ../programs/readline.nix
     ../programs/starship.nix
   ];
