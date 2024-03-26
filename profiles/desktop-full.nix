@@ -5,6 +5,7 @@
     ./desktop-light.nix
     ../programs/docker.nix
     ../programs/steam.nix
+    ../programs/system-snapshot.nix
     ../programs/tailscale-helpers.nix
   ];
 
