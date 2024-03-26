@@ -10,6 +10,7 @@
     ../programs/http-server.nix
     ../programs/readline.nix
     ../programs/ruby.nix
+    ../programs/security-keys.nix
   ];
 
   home.packages = builtins.attrValues {
