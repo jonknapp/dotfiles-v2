@@ -1,5 +1,27 @@
 { config, pkgs, ... }:
 
+let
+  dotfiles-diff = pkgs.writeShellApplication
+    {
+      name = "dotfiles-diff";
+      text = ''
+        (cd "$HOME/.config/home-manager/" && home-manager build)
+
+        # https://discourse.nixos.org/t/nvd-simple-nix-nixos-version-diff-tool/12397/15
+        nix store diff-closures "/nix/var/nix/profiles/per-user/$USER/home-manager" "$HOME/.config/home-manager/result"
+      '';
+    };
+  dotfiles-security = pkgs.writeShellApplication
+    {
+      name = "dotfiles-security";
+      runtimeInputs = [ pkgs.vulnix ];
+      text = ''
+        (cd "$HOME/.config/home-manager/" && home-manager build)
+
+        vulnix "$HOME/.config/home-manager/result"
+      '';
+    };
+in
 {
   xdg.configFile."nix/nix.conf".text = ''
     experimental-features = nix-command flakes
@@ -9,6 +31,8 @@
   # xdg.configFile."nixpkgs/config.nix".text = ''
   #   { allowUnfree = true; }
   # '';
+
+  home.packages = [ dotfiles-diff dotfiles-security ];
 
   fonts.fontconfig.enable = true;
   programs.home-manager.enable = true;
