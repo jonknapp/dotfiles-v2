@@ -5,6 +5,7 @@
     ./desktop-light.nix
     ../programs/docker.nix
     ../programs/steam.nix
+    ../programs/tailscale-helpers.nix
   ];
 
   home.packages =
@@ -22,4 +23,5 @@
     };
 
   programs.docker = { enable = true; rootless = true; };
+  programs.tailscale-helpers.enable = true;
 }
