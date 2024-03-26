@@ -39,11 +39,35 @@
             })
           ];
         };
+      pop-robot = hmConfig
+        {
+          username = "jon";
+          hostname = "pop-robot";
+          system = "x86_64-linux";
+          genericLinux = true;
+          modules = [
+            ./profiles/cli.nix
+            ./profiles/desktop-full.nix
+            ({ pkgs, ... }: {
+              home.packages = [
+                inputs.git-remote-open.defaultPackage.${pkgs.system}
+                inputs.mdquote.defaultPackage.${pkgs.system}
+              ];
+            })
+          ];
+        };
     in
     {
       homeConfigurations = {
         ${megaman.name} = megaman.configuration;
+        ${pop-robot.name} = pop-robot.configuration;
       };
-      packages.${megaman.system}.${megaman.name} = megaman.package;
+      packages = nixpkgs.lib.recursiveUpdate
+        {
+          ${megaman.system}.${megaman.name} = megaman.package;
+        }
+        {
+          ${pop-robot.system}.${pop-robot.name} = pop-robot.package;
+        };
     };
 }
