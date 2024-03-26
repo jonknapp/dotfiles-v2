@@ -31,6 +31,7 @@
           modules = [
             ./profiles/cli.nix
             ./profiles/desktop-full.nix
+            ./profiles/development.nix
             ({ pkgs, ... }: {
               home.packages = [
                 inputs.git-remote-open.defaultPackage.${pkgs.system}
@@ -48,6 +49,7 @@
           modules = [
             ./profiles/cli.nix
             ./profiles/desktop-full.nix
+            ./profiles/development.nix
             ({ pkgs, ... }: {
               home.packages = [
                 inputs.git-remote-open.defaultPackage.${pkgs.system}
