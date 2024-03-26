@@ -7,6 +7,7 @@
     ../programs/git.nix
     ../programs/gpg.nix
     ../programs/heroku.nix
+    ../programs/http-server.nix
     ../programs/readline.nix
     ../programs/ruby.nix
   ];

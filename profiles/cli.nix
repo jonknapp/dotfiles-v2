@@ -5,6 +5,7 @@ let
     gh = "git-remote-open";
     grep = "grep --color=auto";
     ls = "ls --color=auto";
+    nix-gc = "nix-collect-garbage --delete-older-than 30d";
     open = "xdg-open";
     pbcopy = "${pkgs.xclip}/bin/xclip -selection c";
     pbpaste = "${pkgs.xclip}/bin/xclip -selection clipboard -o";
