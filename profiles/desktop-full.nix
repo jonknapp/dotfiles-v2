@@ -4,6 +4,7 @@
   imports = [
     ./desktop-light.nix
     ../programs/docker.nix
+    ../programs/steam.nix
   ];
 
   home.packages =
