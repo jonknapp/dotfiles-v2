@@ -15,7 +15,8 @@
         google-chrome
         inkscape
         kdiff3
-        slack;
+        slack
+        tigervnc;
       # todoist-electron
     };
 
