@@ -20,6 +20,7 @@ in
     ../programs/gpg.nix
     ../programs/heroku.nix
     ../programs/readline.nix
+    ../programs/ruby.nix
     ../programs/starship.nix
     ../programs/vim.nix
   ];
