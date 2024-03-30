@@ -27,11 +27,8 @@ let
 
           homeDirectory = "/home/${username}";
         };
-
-        systemd.user.systemctlPath = pkgs.lib.mkIf (genericLinux) "/usr/bin/systemctl";
-        targets.genericLinux.enable = pkgs.lib.mkIf (genericLinux) true;
       }
-    ] ++ modules;
+    ] ++ (if (genericLinux) then [ ./profiles/generic-linux.nix ] else [ ]) ++ modules;
   } // options);
 in
 {
