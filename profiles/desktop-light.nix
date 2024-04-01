@@ -4,6 +4,7 @@
   imports = [
     ../programs/borgmatic.nix
     ../programs/notes.nix
+    ../programs/pop-launcher.nix
     ../programs/vscode.nix
   ];
 
