@@ -15,12 +15,16 @@ let
 in
 {
   imports = [
+    ../programs/atuin.nix
+    ../programs/blesh.nix
     ../programs/starship.nix
     ../programs/vim.nix
   ];
 
+  programs.atuin.enable = true;
   programs.bash = {
     inherit shellAliases;
     enable = true;
   };
+  programs.blesh.enable = true;
 }
