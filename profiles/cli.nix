@@ -20,7 +20,10 @@ in
     ../programs/vim.nix
   ];
 
-  programs.atuin.enable = true;
+  programs.atuin = {
+    enable = true;
+    enableBashIntegration = true;
+  };
   programs.bash = {
     inherit shellAliases;
     enable = true;
