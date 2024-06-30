@@ -2,6 +2,24 @@
 
 let
   borgmaticConfig = (import ../files/borgbase.nix { homeDirectory = config.home.homeDirectory; }).${hostConfig.hostname};
+  borg-backup = pkgs.writeShellApplication
+    {
+      name = "borg-backup";
+      text = ''
+        # set -o xtrace
+        # set -euo pipefail
+        # shopt -s inherit_errexit
+
+        ssid="$(${pkgs.wirelesstools}/bin/iwgetid -r)"
+        if [[ "$ssid" == "Coffee and Code" ]]; then
+          echo "Starting backup..."
+          "${pkgs.borgmatic}/bin/borgmatic" create --list
+          echo "Backup complete."
+        else
+          echo "Skipping backup; ssid is '$ssid'"
+        fi
+      '';
+    };
 in
 {
   systemd.user.services.borg-backup = {
@@ -14,7 +32,10 @@ in
       Type = "oneshot";
       Nice = 15;
       IOSchedulingClass = "best-effort";
-      ExecStart = "${pkgs.borgmatic}/bin/borgmatic create --list";
+      ExecStartPre = "/bin/sleep 10";
+      ExecStart = ''
+        /bin/sh -c ${borg-backup}/bin/borg-backup
+      '';
     };
   };
 
