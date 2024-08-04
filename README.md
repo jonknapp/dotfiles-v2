@@ -96,6 +96,30 @@ nix build .#jon@megaman
 
 This requires manual activation by running `./result/activate` once built.
 
+## Secrets
+
+Secrets are stored as encrypted files that must be decrypted by an allowed private key.
+
+```sh
+echo 'hello' | age -a -o secrets/filename.age -R ~/.ssh/id_ed25519.pub
+```
+
+They can then be decrypted with something like:
+
+```nix
+{
+  custom-cmd = pkgs.writeShellApplication
+    {
+      name = "custom-cmd";
+      text = ''
+        SECRET="$(${pkgs.rage}/bin/rage --decrypt --identity "${config.home.homeDirectory}/.ssh/id_ed25519" ${
+          ../secrets/filename.age
+        })" some-other-command
+      '';
+    };
+}
+```
+
 ## Troubleshooting
 
 To compare with what the latest recommended install would look like

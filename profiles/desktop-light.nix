@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../programs/_1password.nix
     ../programs/borgmatic.nix
     ../programs/notes.nix
     ../programs/pop-launcher.nix
