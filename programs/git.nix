@@ -24,6 +24,8 @@
     extraConfig = {
       advice.skippedCherryPicks = false;
       core.editor = "${pkgs.vscode}/bin/code --wait";
+      diff.tool = "bc";
+      difftool.bc.trustExitCode = true;
       difftool.prompt = false;
       gpg.format = "ssh";
       gpg.ssh.allowedSignersFile = "~/${config.xdg.configFile."ssh/allowed_signers".target}";

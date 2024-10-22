@@ -43,6 +43,17 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = [ startTailscale ];
 
+    services.trayscale.enable = true;
+
+    # hack to allow HM managed tray services to work
+    # https://github.com/nix-community/home-manager/issues/2064#issuecomment-887300055
+    systemd.user.targets.tray = {
+      Unit = {
+        Description = "Home Manager System Tray";
+        Requires = [ "graphical-session-pre.target" ];
+      };
+    };
+
     systemd.user.services.tailscale-receiver = lib.mkIf cfg.enableReceiver {
       Unit = {
         Description = "File receiver service for Tailscale's Taildrop";
