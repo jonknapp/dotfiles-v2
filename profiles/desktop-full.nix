@@ -18,6 +18,7 @@
         google-chrome
         inkscape
         kdiff3
+        nix-tree
         slack
         tigervnc;
       # todoist-electron
