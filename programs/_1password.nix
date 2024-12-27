@@ -7,7 +7,7 @@ let
       text = ''
         OP_SERVICE_ACCOUNT_TOKEN="$(${pkgs.rage}/bin/rage --decrypt --identity "${config.home.homeDirectory}/.ssh/id_ed25519" ${
           ../secrets/op.age
-        })" ${pkgs._1password}/bin/op "$@"
+        })" ${pkgs._1password-cli}/bin/op "$@"
       '';
     };
 
