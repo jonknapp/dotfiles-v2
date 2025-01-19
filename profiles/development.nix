@@ -9,6 +9,7 @@
     ../programs/heroku.nix
     ../programs/http-server.nix
     ../programs/jujutsu.nix
+    ../programs/postgres.nix
     ../programs/readline.nix
     ../programs/ruby.nix
     ../programs/security-keys.nix
