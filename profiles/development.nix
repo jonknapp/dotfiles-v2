@@ -15,11 +15,13 @@
     ../programs/security-keys.nix
   ];
 
-  home.packages = builtins.attrValues {
-    inherit (pkgs)
-      fd
-      ripgrep;
-  };
+  home.packages =
+    builtins.attrValues {
+      inherit (pkgs)
+        fd
+        nixpkgs-fmt
+        ripgrep;
+    };
 
   home.sessionVariables = {
     EDITOR = "${pkgs.vscode}/bin/code --wait";
