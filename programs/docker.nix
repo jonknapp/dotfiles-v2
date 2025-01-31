@@ -1,5 +1,12 @@
 { config, lib, pkgs, ... }:
 
+# NOTE: This requires manual configuration to get Docker rootless to work on
+#       something like PopOS.
+#
+#       sudo apt-get install -y uidmap
+#       echo "jon:231072:65536" | sudo tee -a /etc/subgid
+#       echo "jon:231072:65536" | sudo tee -a /etc/subuid
+
 let
   cfg = config.programs.docker;
 
