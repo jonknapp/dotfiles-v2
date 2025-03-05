@@ -59,7 +59,7 @@ in
     enable = lib.mkEnableOption "Docker";
 
     enableBashIntegration = lib.mkOption {
-      default = cfg.rootless;
+      default = config.home.shell.enableBashIntegration;
       type = lib.types.bool;
       description = "Whether to enable Bash integration.";
     };

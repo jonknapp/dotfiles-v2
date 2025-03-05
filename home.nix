@@ -33,6 +33,7 @@ in
   # '';
 
   home.packages = [ dotfiles-diff dotfiles-security ];
+  home.shell.enableBashIntegration = true;
 
   fonts.fontconfig.enable = true;
   programs.home-manager.enable = true;

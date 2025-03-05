@@ -22,7 +22,6 @@ in
 
   programs.atuin = {
     enable = true;
-    enableBashIntegration = true;
   };
   programs.bash = {
     inherit shellAliases;
