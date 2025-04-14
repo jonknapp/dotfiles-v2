@@ -37,6 +37,7 @@ in
 
   fonts.fontconfig.enable = true;
   programs.home-manager.enable = true;
+  services.home-manager.autoExpire.enable = true;
 
   xdg.enable = true;
   xdg.mime.enable = false; # workaround for https://github.com/nix-community/home-manager/issues/4682
