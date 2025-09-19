@@ -22,6 +22,12 @@ in
 
   programs.atuin = {
     enable = true;
+    # NOTE: To get this to work the first time you need to change to another shell (like `sh`)
+    #       then remove the default config file (ex: `rm ~/.config/atuin/config.toml`)
+    #       and run `home-manager switch`.
+    settings.history_filter = [
+      "RAILS_MASTER_KEY"
+    ];
   };
   programs.bash = {
     inherit shellAliases;
