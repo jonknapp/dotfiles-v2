@@ -28,6 +28,7 @@ in
     settings.history_filter = [
       "RAILS_MASTER_KEY"
     ];
+    settings.secrets_filter = true;
   };
   programs.bash = {
     inherit shellAliases;
